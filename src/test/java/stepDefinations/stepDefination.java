@@ -21,6 +21,7 @@ import io.restassured.specification.RequestSpecification;
 import io.restassured.specification.ResponseSpecification;
 import pojo.Location;
 import pojo.addPlace;
+import resources.APIResources;
 import resources.testDataBuild;
 import resources.utils;
 public class stepDefination extends utils {
@@ -53,8 +54,11 @@ public class stepDefination extends utils {
 		res=given().spec(requestSpecification()).body(p);
 	}
 	
-	@When("user calls {string} with post request")
-	public void user_call_With_post_httpRequest() {
+	@When("user calls {string} with {string} request")
+	public void user_call_With_post_httpRequest(String resource) {
+		APIResources resourceapi=APIResources.valueOf(resource);
+		resourceapi.getResource();
+		System.out.println(resourceapi.getResource());
 		 response=res.when().post("/maps/api/place/add/json")
 				.then().spec(resspec).extract().response();
 		System.out.println(response);
