@@ -2,7 +2,8 @@ package pojo;
 
 import java.util.List;
 
-public class addPlace {
+public class AddPlace {
+
 	private int accuracy;
 	private String name;
 	private String phone_number;
@@ -59,6 +60,5 @@ public class addPlace {
 	public void setTypes(List<String> types) {
 		this.types = types;
 	}
-
 
 }
