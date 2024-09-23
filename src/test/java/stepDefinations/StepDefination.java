@@ -83,7 +83,6 @@ public class StepDefination extends Utils {
 	@Given("DeletePlace Payload")
 	public void deleteplace_Payload() throws IOException {
 		// Write code here that turns the phrase above into concrete actions
-
 		res = given().spec(requestSpecification()).body(data.deletePlacePayload(place_id));
 	}
 

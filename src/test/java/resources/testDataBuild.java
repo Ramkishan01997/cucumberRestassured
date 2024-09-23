@@ -5,6 +5,7 @@ import java.util.List;
 
 import pojo.AddPlace;
 import pojo.Location;
+import pojo.UserData;
 
 
 
@@ -32,7 +33,13 @@ public class TestDataBuild {
 		p.setLocation(l);
 		return p;
 	}
-	
+	public UserData userPayload(String name, String job) {
+		UserData u=new UserData();
+		u.setName(name);
+		u.setJob(job);
+		return u;
+		
+	}
 	public String deletePlacePayload(String placeId)
 	{
 		return "{\r\n    \"place_id\":\""+placeId+"\"\r\n}";

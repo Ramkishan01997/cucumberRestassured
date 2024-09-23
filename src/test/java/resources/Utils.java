@@ -17,6 +17,7 @@ import io.restassured.specification.RequestSpecification;
 
 public class Utils {
 RequestSpecification req;
+RequestSpecification userreq;
 	
 	public RequestSpecification requestSpecification() throws IOException {
 		PrintStream log=new PrintStream(new FileOutputStream("logging.txt"));
@@ -30,6 +31,15 @@ RequestSpecification req;
 		
 		return req;
 }
+	public RequestSpecification userreq() throws IOException {
+		//PrintStream log=new PrintStream(new FileOutputStream("user.txt"));
+		userreq=new RequestSpecBuilder().setBaseUri(getPropertyValue("requrl"))
+				//.addFilter(RequestLoggingFilter.logRequestTo(log))
+				//.addFilter(ResponseLoggingFilter.logResponseTo(log))
+				.setContentType(ContentType.JSON).build();
+		System.out.println(userreq().then().log().all());
+	return userreq;
+	}
 	public static String getPropertyValue(String key) throws IOException {
 		Properties prop=new Properties();
 		FileInputStream file=new FileInputStream(System.getProperty("user.dir")+"//src/test//java//resources//global.properties");
